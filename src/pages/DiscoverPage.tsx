@@ -1,17 +1,47 @@
-import { PageTitle, ProfileButton, SectionLabel, Card, Button, Badge, ProductCard, DeliverySlotCard } from '../components/ui'
+import { useNavigate } from 'react-router-dom'
+import {
+  PageTitle,
+  ProfileButton,
+  SectionLabel,
+  Card,
+  Button,
+  Badge,
+  ProductCard,
+  RecipeCard,
+  DeliverySlotCard,
+  HScroll,
+} from '../components/ui'
 
-const COLLECTIONS = [
-  { title: 'New & trending', sub: '32 products', emoji: '✨', gradient: 'from-citrus/30 to-primary/20' },
-  { title: 'Regional favourites', sub: 'From your canton', emoji: '🏔️', gradient: 'from-primary/25 to-forest/15' },
-  { title: 'On offer', sub: 'Up to 30% off', emoji: '🏷️', gradient: 'from-tomato/25 to-berry/15' },
+const REGULARS = [
+  { name: 'Whole Milk', sub: '1 L · UHT', price: 'CHF 1.60', emoji: '🥛', gradient: 'from-primary/15 to-sand' },
+  { name: 'Bio Bananas', sub: '1 kg', price: 'CHF 3.20', emoji: '🍌', gradient: 'from-citrus/30 to-primary/15' },
+  { name: 'Free-range Eggs', sub: '10 pcs', price: 'CHF 5.90', emoji: '🥚', gradient: 'from-sand to-citrus/20' },
+  { name: 'Sourdough Bread', sub: '500 g', price: 'CHF 4.50', emoji: '🍞', gradient: 'from-citrus/25 to-tomato/15' },
 ]
 
-const PICKS = [
-  { name: 'Strawberries', sub: '500 g · Swiss', price: 'CHF 4.50', emoji: '🍓', badge: <Badge tone="fresh">Fresh</Badge>, gradient: 'from-berry/20 to-tomato/20' },
-  { name: 'Avocado', sub: 'Ripe & ready', price: 'CHF 2.20', emoji: '🥑', badge: <Badge tone="sale">-20%</Badge>, gradient: 'from-primary/25 to-citrus/20' },
+const PROMOS = [
+  { name: 'Cherry Tomatoes', sub: '250 g', price: 'CHF 2.24', emoji: '🍅', badge: <Badge tone="sale">-20%</Badge>, gradient: 'from-tomato/25 to-berry/15' },
+  { name: 'Avocado', sub: 'Ripe & ready', price: 'CHF 1.76', emoji: '🥑', badge: <Badge tone="sale">-20%</Badge>, gradient: 'from-primary/25 to-citrus/20' },
+  { name: 'Dark Chocolate', sub: '100 g · 70%', price: 'CHF 2.04', emoji: '🍫', badge: <Badge tone="sale">-15%</Badge>, gradient: 'from-berry/20 to-forest/15' },
 ]
+
+const RECIPES = [
+  { name: 'Summer berry tart', time: '50 min', emoji: '🥧', gradient: 'from-berry/20 to-tomato/15' },
+  { name: 'Tomato & basil salad', time: '10 min', emoji: '🥗', gradient: 'from-primary/25 to-citrus/15' },
+  { name: 'Rösti with fried egg', time: '25 min', emoji: '🥔', gradient: 'from-citrus/30 to-primary/15' },
+]
+
+function SeeAll({ onClick }: { onClick: () => void }) {
+  return (
+    <button type="button" onClick={onClick} className="text-[13px] font-bold text-primary">
+      See all
+    </button>
+  )
+}
 
 export default function DiscoverPage() {
+  const navigate = useNavigate()
+
   return (
     <>
       <PageTitle action={<ProfileButton />}>Discover</PageTitle>
@@ -21,47 +51,64 @@ export default function DiscoverPage() {
         <DeliverySlotCard />
       </div>
 
-      {/* Hero promo */}
+      {/* Your regular buys */}
+      <SectionLabel action={<SeeAll onClick={() => navigate('/products')} />}>
+        Your regular buys
+      </SectionLabel>
+      <HScroll>
+        {REGULARS.map((p) => (
+          <div key={p.name} className="w-40 shrink-0">
+            <ProductCard {...p} />
+          </div>
+        ))}
+      </HScroll>
+
+      {/* Promotions for you */}
+      <SectionLabel action={<SeeAll onClick={() => navigate('/promotions')} />}>
+        Promotions for you
+      </SectionLabel>
+      <HScroll>
+        {PROMOS.map((p) => (
+          <div key={p.name} className="w-40 shrink-0">
+            <ProductCard {...p} />
+          </div>
+        ))}
+      </HScroll>
+
+      {/* Scratch & Win */}
+      <SectionLabel>Scratch &amp; Win</SectionLabel>
       <div className="px-4">
-        <Card className="overflow-hidden !border-0 !bg-forest !shadow-cta">
-          <div className="p-5 text-white">
-            <span className="text-[13px] font-bold uppercase tracking-[0.14em] text-white/70">
-              Seasonal
+        <Card className="overflow-hidden !border-0 bg-gradient-to-br from-citrus to-berry !shadow-cta">
+          <div className="flex items-center gap-4 p-5 text-white">
+            <span className="text-5xl" aria-hidden>
+              🎟️
             </span>
-            <h2 className="mt-1 font-display text-[24px] font-bold">Swiss summer harvest</h2>
-            <p className="mt-1 text-[15px] text-white/85">
-              Berries, stone fruit &amp; fresh herbs — picked this week
-            </p>
-            <Button variant="secondary" className="mt-4">
-              Explore
+            <div className="min-w-0 flex-1">
+              <h3 className="font-display text-[20px] font-bold">Scratch &amp; Win</h3>
+              <p className="text-[14px] text-white/90">
+                A prize hides under every card — one free scratch daily.
+              </p>
+            </div>
+          </div>
+          <div className="px-5 pb-5">
+            <Button variant="secondary" className="!text-berry">
+              Scratch now
             </Button>
           </div>
         </Card>
       </div>
 
-      <SectionLabel>Collections</SectionLabel>
-      <div className="space-y-3 px-4">
-        {COLLECTIONS.map((c) => (
-          <Card key={c.title} className="flex items-center gap-4 p-3">
-            <div
-              className={`grid h-16 w-16 shrink-0 place-items-center rounded-[16px] bg-gradient-to-br ${c.gradient} text-3xl`}
-            >
-              {c.emoji}
-            </div>
-            <div>
-              <div className="text-[16px] font-extrabold text-ink">{c.title}</div>
-              <div className="text-[13px] font-bold text-label">{c.sub}</div>
-            </div>
-          </Card>
+      {/* New recipes */}
+      <SectionLabel action={<SeeAll onClick={() => navigate('/cook')} />}>
+        New recipes
+      </SectionLabel>
+      <HScroll>
+        {RECIPES.map((r) => (
+          <div key={r.name} className="w-44 shrink-0">
+            <RecipeCard {...r} />
+          </div>
         ))}
-      </div>
-
-      <SectionLabel>Fresh picks</SectionLabel>
-      <div className="grid grid-cols-2 gap-3 px-4">
-        {PICKS.map((p) => (
-          <ProductCard key={p.name} {...p} />
-        ))}
-      </div>
+      </HScroll>
 
       <div className="h-28" />
     </>

@@ -5,6 +5,7 @@ import PhoneFrame from './PhoneFrame'
 import { GlassTabbar, Tab } from './components/Glass'
 import DiscoverPage from './pages/DiscoverPage'
 import ProductsPage from './pages/ProductsPage'
+import TopProductsPage from './pages/TopProductsPage'
 import PromotionsPage from './pages/PromotionsPage'
 import CookPage from './pages/CookPage'
 import BasketPage from './pages/BasketPage'
@@ -27,6 +28,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<DiscoverPage />} />
           <Route path="/products" element={<ProductsPage />} />
+          <Route path="/top-products" element={<TopProductsPage />} />
           <Route path="/promotions" element={<PromotionsPage />} />
           <Route path="/cook" element={<CookPage />} />
           <Route path="/basket" element={<BasketPage />} />

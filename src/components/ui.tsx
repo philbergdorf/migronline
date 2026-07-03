@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, InputHTMLAttributes, ReactNode } from 'react'
-import { Search, Plus, Minus, Check, User } from 'lucide-react'
+import { Search, Plus, Minus, Check, User, Clock, ChevronRight } from 'lucide-react'
 
 /* ---------------------------------------------------------------------------
    Layout / typography
@@ -37,11 +37,20 @@ export function ProfileButton({ onClick }: { onClick?: () => void }) {
   )
 }
 
-/** Uppercase section label. */
-export function SectionLabel({ children }: { children: ReactNode }) {
+/** Uppercase section label, with an optional trailing action (e.g. "See all"). */
+export function SectionLabel({
+  children,
+  action,
+}: {
+  children: ReactNode
+  action?: ReactNode
+}) {
   return (
-    <div className="px-5 pb-2 pt-6 text-[13px] font-bold uppercase tracking-[0.14em] text-label">
-      {children}
+    <div className="flex items-center justify-between gap-3 px-5 pb-2 pt-6">
+      <span className="text-[13px] font-bold uppercase tracking-[0.14em] text-label">
+        {children}
+      </span>
+      {action}
     </div>
   )
 }
@@ -76,6 +85,49 @@ export function DeliverySlotCard({ onChange }: { onChange?: () => void }) {
         Change
       </Button>
     </Card>
+  )
+}
+
+/** Horizontal, edge-to-edge scrolling row (e.g. product/recipe sliders). */
+export function HScroll({ children }: { children: ReactNode }) {
+  return (
+    <div className="no-scrollbar flex gap-3 overflow-x-auto px-4 pb-1">{children}</div>
+  )
+}
+
+/** Grouped list container — rounded surface card with divided rows. */
+export function ListGroup({ children }: { children: ReactNode }) {
+  return (
+    <div className="mx-4 divide-y divide-hairline overflow-hidden rounded-card border border-hairline bg-surface shadow-soft">
+      {children}
+    </div>
+  )
+}
+
+/** A navigational list row: leading icon tile, label, trailing chevron. */
+export function NavRow({
+  icon,
+  label,
+  tint = 'bg-primary/12 text-forest',
+  onClick,
+}: {
+  icon: ReactNode
+  label: ReactNode
+  tint?: string
+  onClick?: () => void
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="flex w-full items-center gap-3 px-4 py-3.5 text-left transition active:bg-sand/60"
+    >
+      <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-[10px] ${tint}`}>
+        {icon}
+      </span>
+      <span className="flex-1 text-[16px] font-bold text-ink">{label}</span>
+      <ChevronRight size={18} className="shrink-0 text-black/25" />
+    </button>
   )
 }
 
@@ -370,6 +422,87 @@ export function ProductCard({
       <div className="mt-2 flex items-center justify-between">
         <span className="font-display text-[18px] font-bold text-forest">{price}</span>
         <AddButton label={`Add ${name}`} onClick={onAdd} />
+      </div>
+    </div>
+  )
+}
+
+/**
+ * Horizontal product card — image tile left, details + add button right.
+ * `bare` drops the card chrome so it can sit inside a ListGroup with dividers.
+ */
+export function ProductRow({
+  name,
+  sub,
+  price,
+  emoji,
+  gradient = 'from-primary/20 to-citrus/20',
+  badge,
+  onAdd,
+  bare = false,
+}: {
+  name: string
+  sub: string
+  price: string
+  emoji: string
+  gradient?: string
+  badge?: ReactNode
+  onAdd?: () => void
+  bare?: boolean
+}) {
+  return (
+    <div
+      className={
+        bare
+          ? 'flex items-stretch gap-3 pr-3'
+          : 'flex items-stretch gap-3 overflow-hidden rounded-[18px] border border-hairline bg-surface pr-3'
+      }
+    >
+      <div
+        className={`relative grid w-16 shrink-0 place-items-center border border-black/10 bg-gradient-to-br ${gradient}`}
+      >
+        {badge && <div className="absolute left-1.5 top-1.5">{badge}</div>}
+        <span className="text-3xl" aria-hidden>
+          {emoji}
+        </span>
+      </div>
+      <div className="flex min-w-0 flex-1 items-center gap-3 py-2.5">
+        <div className="min-w-0 flex-1">
+          <div className="text-[15px] font-extrabold leading-tight text-ink">{name}</div>
+          <div className="mt-0.5 text-[12px] font-bold leading-snug text-label">{sub}</div>
+        </div>
+        <div className="flex shrink-0 items-center gap-2.5">
+          <span className="font-display text-[16px] font-bold text-forest">{price}</span>
+          <AddButton label={`Add ${name}`} onClick={onAdd} />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export function RecipeCard({
+  name,
+  time,
+  emoji,
+  gradient = 'from-primary/20 to-citrus/20',
+}: {
+  name: string
+  time: string
+  emoji: string
+  gradient?: string
+}) {
+  return (
+    <div className="rounded-card border border-hairline bg-surface p-3">
+      <div
+        className={`mb-3 grid h-[110px] place-items-center rounded-[16px] bg-gradient-to-br ${gradient}`}
+      >
+        <span className="text-4xl" aria-hidden>
+          {emoji}
+        </span>
+      </div>
+      <div className="text-[15px] font-extrabold leading-tight text-ink">{name}</div>
+      <div className="mt-1.5 flex items-center gap-1 text-[13px] font-bold text-label">
+        <Clock size={14} strokeWidth={2.2} /> {time}
       </div>
     </div>
   )

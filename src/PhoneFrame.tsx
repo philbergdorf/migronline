@@ -16,9 +16,6 @@ export default function PhoneFrame({ children }: { children: ReactNode }) {
           sm:w-[390px] sm:h-[844px] sm:rounded-[3rem] sm:shadow-2xl sm:ring-2 sm:ring-black/10
         "
       >
-        {/* Notch (frame only, shown on desktop) */}
-        <div className="hidden sm:block absolute top-0 left-1/2 -translate-x-1/2 z-50 h-7 w-40 bg-black rounded-b-2xl" />
-
         <div className="relative h-full w-full overflow-hidden">
           {/* Warm cream canvas with a soft harvest glow at the top */}
           <div className="absolute inset-0 bg-cream" />
