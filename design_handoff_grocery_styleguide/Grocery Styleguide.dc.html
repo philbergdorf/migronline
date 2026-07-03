@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#EEF2EC; }
+  @keyframes floaty { 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-6px) } }
+  button:focus-visible, input:focus-visible, a:focus-visible { outline:3px solid #23543A; outline-offset:3px; }
+</style>
+</helmet>
+
+<section style="padding:64px; display:flex; flex-direction:column; gap:20px; font-family:'Nunito',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:16px;">
+    <h1 style="margin:0; font-family:'Fredoka',sans-serif; font-size:30px; font-weight:700; color:#2A2A24;">Grocery App Styleguide</h1>
+    <span style="font-size:15px; color:#6b6656; font-weight:600;">Harvest &middot; warm &amp; wholesome</span>
+  </div>
+
+  <div style="display:flex; flex-wrap:wrap; gap:56px; align-items:flex-start;">
+
+    <!-- ============ DIRECTION 1B : HARVEST ============ -->
+    <div id="1b" style="width:600px; background:#FBF7EF; border-radius:36px; padding:36px; box-shadow:0 30px 80px -30px rgba(42,42,36,.28); font-family:'Nunito',sans-serif; color:#2A2A24;">
+
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:28px;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <div style="width:52px; height:52px; border-radius:50%; background:#3DA35D; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 20px -6px rgba(61,163,93,.5);">
+            <span style="font-family:'Fredoka',sans-serif; font-size:26px; font-weight:700; color:#fff;">H</span>
+          </div>
+          <div>
+            <div style="font-family:'Fredoka',sans-serif; font-size:24px; font-weight:700; line-height:1;">Harvest</div>
+            <div style="font-size:13px; color:#6b6656; font-weight:600;">warm &amp; wholesome</div>
+          </div>
+        </div>
+        <span style="background:#fff; color:#23543A; font-family:'Fredoka',sans-serif; font-weight:700; font-size:15px; padding:8px 16px; border-radius:999px; box-shadow:0 4px 10px -4px rgba(42,42,36,.2);">1b</span>
+      </div>
+
+      <!-- COLORS -->
+      <div style="font-family:'Fredoka',sans-serif; font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#6f6a58; margin-bottom:14px;">Color</div>
+      <div style="display:flex; gap:10px; margin-bottom:12px;">
+        <div style="flex:1;">
+          <div style="height:64px; border-radius:22px; background:#3DA35D;"></div>
+          <div style="font-weight:800; font-size:14px; margin-top:8px;">Primary</div>
+          <div style="font-family:ui-monospace,Menlo,monospace; font-size:12px; color:#6b6656;">#3DA35D</div>
+        </div>
+        <div style="flex:1;">
+          <div style="height:64px; border-radius:22px; background:#23543A;"></div>
+          <div style="font-weight:800; font-size:14px; margin-top:8px;">Forest</div>
+          <div style="font-family:ui-monospace,Menlo,monospace; font-size:12px; color:#6b6656;">#23543A</div>
+        </div>
+        <div style="flex:1;">
+          <div style="height:64px; border-radius:22px; background:#FFFDF8; border:1px solid #ece5d6;"></div>
+          <div style="font-weight:800; font-size:14px; margin-top:8px;">Cream</div>
+          <div style="font-family:ui-monospace,Menlo,monospace; font-size:12px; color:#6b6656;">#FBF7EF</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; margin-bottom:12px;">
+        <div style="flex:1;"><div style="height:44px; border-radius:16px; background:#B03A6E;"></div><div style="font-size:12px; font-weight:700; margin-top:6px;">Berry</div><div style="font-family:ui-monospace,Menlo,monospace; font-size:11px; color:#6b6656;">#B03A6E</div></div>
+        <div style="flex:1;"><div style="height:44px; border-radius:16px; background:#E8952B;"></div><div style="font-size:12px; font-weight:700; margin-top:6px;">Citrus</div><div style="font-family:ui-monospace,Menlo,monospace; font-size:11px; color:#6b6656;">#E8952B</div></div>
+        <div style="flex:1;"><div style="height:44px; border-radius:16px; background:#D9503A;"></div><div style="font-size:12px; font-weight:700; margin-top:6px;">Tomato</div><div style="font-family:ui-monospace,Menlo,monospace; font-size:11px; color:#6b6656;">#D9503A</div></div>
+      </div>
+      <div style="display:flex; gap:10px; margin-bottom:30px;">
+        <div style="flex:1;"><div style="height:34px; border-radius:12px; background:#2A2A24;"></div><div style="font-size:11px; font-weight:700; margin-top:6px;">Ink #2A2A24</div></div>
+        <div style="flex:1;"><div style="height:34px; border-radius:12px; background:#F2ECDF; border:1px solid #ece5d6;"></div><div style="font-size:11px; font-weight:700; margin-top:6px;">Sand #F2ECDF</div></div>
+        <div style="flex:1;"><div style="height:34px; border-radius:12px; background:#FFFDF8; border:1px solid #ece5d6;"></div><div style="font-size:11px; font-weight:700; margin-top:6px;">Surface #FFFDF8</div></div>
+      </div>
+
+      <!-- TYPE -->
+      <div style="font-family:'Fredoka',sans-serif; font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#6f6a58; margin-bottom:14px;">Type &mdash; Fredoka + Nunito</div>
+      <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:30px;">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; border-bottom:1px dashed #ece5d6; padding-bottom:10px;">
+          <span style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:32px;">Fresh today</span>
+          <span style="font-family:ui-monospace,Menlo,monospace; font-size:11px; color:#6f6a58;">Display / 32</span>
+        </div>
+        <div style="display:flex; align-items:baseline; justify-content:space-between; border-bottom:1px dashed #ece5d6; padding-bottom:10px;">
+          <span style="font-family:'Fredoka',sans-serif; font-weight:600; font-size:22px;">Weekly picks</span>
+          <span style="font-family:ui-monospace,Menlo,monospace; font-size:11px; color:#6f6a58;">Heading / 22</span>
+        </div>
+        <div style="display:flex; align-items:baseline; justify-content:space-between; border-bottom:1px dashed #ece5d6; padding-bottom:10px;">
+          <span style="font-weight:600; font-size:16px;">Organic bananas, ripe &amp; ready</span>
+          <span style="font-family:ui-monospace,Menlo,monospace; font-size:11px; color:#6f6a58;">Body / 16</span>
+        </div>
+        <div style="display:flex; align-items:baseline; justify-content:space-between;">
+          <span style="font-weight:600; font-size:13px; color:#6b6656;">Delivered in 30 min</span>
+          <span style="font-family:ui-monospace,Menlo,monospace; font-size:11px; color:#6f6a58;">Caption / 13</span>
+        </div>
+      </div>
+
+      <!-- BUTTONS -->
+      <div style="font-family:'Fredoka',sans-serif; font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#6f6a58; margin-bottom:14px;">Buttons</div>
+      <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:14px;">
+        <button style="border:none; cursor:pointer; font-family:'Fredoka',sans-serif; font-weight:700; font-size:15px; color:#fff; background:#23543A; padding:14px 26px; border-radius:16px; box-shadow:0 10px 22px -8px rgba(35,84,58,.5); transition:transform .15s cubic-bezier(.34,1.56,.64,1);" style-hover="transform:translateY(-3px) scale(1.03);">Add to cart</button>
+        <button style="border:none; cursor:pointer; font-family:'Fredoka',sans-serif; font-weight:700; font-size:15px; color:#23543A; background:#fff; padding:14px 26px; border-radius:16px; box-shadow:0 4px 12px -6px rgba(42,42,36,.25); transition:transform .15s cubic-bezier(.34,1.56,.64,1);" style-hover="transform:translateY(-3px) scale(1.03);">Secondary</button>
+        <button style="cursor:pointer; font-family:'Fredoka',sans-serif; font-weight:700; font-size:15px; color:#3DA35D; background:transparent; padding:14px 24px; border-radius:16px; border:2px solid #3DA35D; transition:transform .15s cubic-bezier(.34,1.56,.64,1);" style-hover="transform:translateY(-3px) scale(1.03);">Outline</button>
+        <button style="border:none; cursor:pointer; font-family:'Fredoka',sans-serif; font-weight:700; font-size:15px; color:#6f6a58; background:#F2ECDF; padding:14px 26px; border-radius:16px;" disabled>Disabled</button>
+      </div>
+      <button style="width:100%; border:none; cursor:pointer; font-family:'Fredoka',sans-serif; font-weight:700; font-size:18px; color:#fff; background:#23543A; padding:18px; border-radius:18px; box-shadow:0 14px 28px -10px rgba(35,84,58,.6); margin-bottom:14px; transition:transform .15s cubic-bezier(.34,1.56,.64,1);" style-hover="transform:scale(1.02);">Checkout &middot; $24.80</button>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:30px;">
+        <span style="background:#23543A; color:#fff; font-weight:700; font-size:14px; padding:9px 18px; border-radius:12px;">All</span>
+        <span style="background:#fff; color:#2A2A24; font-weight:700; font-size:14px; padding:9px 18px; border-radius:12px; box-shadow:0 3px 8px -5px rgba(42,42,36,.3);">Fruit</span>
+        <span style="background:#fff; color:#2A2A24; font-weight:700; font-size:14px; padding:9px 18px; border-radius:12px; box-shadow:0 3px 8px -5px rgba(42,42,36,.3);">Veg</span>
+        <span style="background:#fff; color:#2A2A24; font-weight:700; font-size:14px; padding:9px 18px; border-radius:12px; box-shadow:0 3px 8px -5px rgba(42,42,36,.3);">Dairy</span>
+      </div>
+
+      <!-- FORM / CONTROLS -->
+      <div style="font-family:'Fredoka',sans-serif; font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#6f6a58; margin-bottom:14px;">Inputs &amp; controls</div>
+      <div style="display:flex; align-items:center; gap:10px; background:#fff; border-radius:16px; padding:14px 18px; margin-bottom:12px; box-shadow:inset 0 0 0 1px #ece5d6;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6f6a58" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+        <span style="color:#6f6a58; font-weight:600;">Search fresh produce&hellip;</span>
+      </div>
+      <label style="display:block; font-weight:700; font-size:13px; color:#6b6656; margin-bottom:6px;">Delivery note</label>
+      <input placeholder="Leave at the door" style="width:100%; box-sizing:border-box; font-family:'Nunito',sans-serif; font-weight:600; font-size:15px; padding:14px 18px; border-radius:16px; border:2px solid #ece5d6; background:#fff; outline:none; margin-bottom:16px;" style-focus="border-color:#3DA35D;" />
+      <div style="display:flex; align-items:center; gap:18px; margin-bottom:30px;">
+        <div style="display:flex; align-items:center; gap:0; background:#fff; border-radius:14px; padding:6px; box-shadow:inset 0 0 0 1px #ece5d6;">
+          <button onClick="{{ decB }}" style="width:44px; height:44px; border:none; cursor:pointer; border-radius:10px; background:#F2ECDF; font-size:22px; font-weight:700; color:#23543A;">&minus;</button>
+          <span style="min-width:44px; text-align:center; font-weight:800; font-size:18px;">{{ qtyB }}</span>
+          <button onClick="{{ incB }}" style="width:44px; height:44px; border:none; cursor:pointer; border-radius:10px; background:#3DA35D; font-size:22px; font-weight:700; color:#fff;">+</button>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div style="width:52px; height:30px; border-radius:999px; background:#3DA35D; padding:3px; display:flex; align-items:center; justify-content:flex-end;"><div style="width:24px; height:24px; border-radius:999px; background:#fff;"></div></div>
+          <span style="font-weight:700; font-size:14px;">Fast delivery</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div style="width:26px; height:26px; border-radius:8px; background:#3DA35D; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:15px;">&#10003;</div>
+          <span style="font-weight:700; font-size:14px;">Organic</span>
+        </div>
+      </div>
+
+      <!-- CARDS -->
+      <div style="font-family:'Fredoka',sans-serif; font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#6f6a58; margin-bottom:14px;">Cards</div>
+      <div style="display:flex; gap:14px; margin-bottom:16px;">
+        <div style="flex:1; background:#FFFDF8; border:1px solid #ece5d6; border-radius:24px; padding:12px;">
+          <div style="position:relative; height:120px; border-radius:16px; background:repeating-linear-gradient(45deg,#EFF6E9,#EFF6E9 10px,#e3efd8 10px,#e3efd8 20px); display:flex; align-items:center; justify-content:center;">
+            <span style="font-family:ui-monospace,Menlo,monospace; font-size:11px; color:#6b8558;">product shot</span>
+            <span style="position:absolute; top:10px; left:10px; background:#D9503A; color:#fff; font-weight:800; font-size:11px; padding:5px 10px; border-radius:10px;">-20%</span>
+          </div>
+          <div style="font-weight:800; font-size:15px; margin-top:12px;">Avocado</div>
+          <div style="font-size:12px; color:#6f6a58; font-weight:700;">per piece</div>
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-top:10px;">
+            <span style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:18px; color:#23543A;">$1.20</span>
+            <button aria-label="Add Avocado" style="width:44px; height:44px; border:none; cursor:pointer; border-radius:12px; background:#3DA35D; color:#fff; font-size:22px; font-weight:700;">+</button>
+          </div>
+        </div>
+        <div style="flex:1; background:#FFFDF8; border:1px solid #ece5d6; border-radius:24px; padding:12px;">
+          <div style="position:relative; height:120px; border-radius:16px; background:repeating-linear-gradient(45deg,#FBEBD2,#FBEBD2 10px,#f4ddb8 10px,#f4ddb8 20px); display:flex; align-items:center; justify-content:center;">
+            <span style="font-family:ui-monospace,Menlo,monospace; font-size:11px; color:#a07a3c;">product shot</span>
+            <span style="position:absolute; top:10px; left:10px; background:#23543A; color:#fff; font-weight:800; font-size:11px; padding:5px 10px; border-radius:10px;">Fresh</span>
+          </div>
+          <div style="font-weight:800; font-size:15px; margin-top:12px;">Oranges</div>
+          <div style="font-size:12px; color:#6f6a58; font-weight:700;">1 kg bag</div>
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-top:10px;">
+            <span style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:18px; color:#23543A;">$3.40</span>
+            <button aria-label="Add Oranges" style="width:44px; height:44px; border:none; cursor:pointer; border-radius:12px; background:#3DA35D; color:#fff; font-size:22px; font-weight:700;">+</button>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fff; border-radius:24px; padding:18px; margin-bottom:30px; box-shadow:inset 0 0 0 1px #ece5d6;">
+        <div style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:16px; margin-bottom:12px;">Your order</div>
+        <div style="display:flex; justify-content:space-between; font-weight:700; font-size:14px; margin-bottom:8px;"><span>Avocado &times;2</span><span>$2.40</span></div>
+        <div style="display:flex; justify-content:space-between; font-weight:700; font-size:14px; margin-bottom:8px;"><span>Oranges &times;1</span><span>$3.40</span></div>
+        <div style="border-top:1px dashed #ece5d6; margin:10px 0;"></div>
+        <div style="display:flex; justify-content:space-between; align-items:center;"><span style="font-weight:800; font-size:15px;">Total</span><span style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:20px; color:#23543A;">$5.80</span></div>
+      </div>
+
+      <!-- ICONOGRAPHY -->
+      <div style="font-family:'Fredoka',sans-serif; font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#6f6a58; margin-bottom:14px;">Iconography</div>
+      <div style="display:flex; gap:10px; margin-bottom:12px;">
+        <div style="flex:1; aspect-ratio:1; border-radius:16px; background:#fff; box-shadow:inset 0 0 0 1px #ece5d6; display:flex; align-items:center; justify-content:center; color:#23543A;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg></div>
+        <div style="flex:1; aspect-ratio:1; border-radius:16px; background:#fff; box-shadow:inset 0 0 0 1px #ece5d6; display:flex; align-items:center; justify-content:center; color:#23543A;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></div>
+        <div style="flex:1; aspect-ratio:1; border-radius:16px; background:#fff; box-shadow:inset 0 0 0 1px #ece5d6; display:flex; align-items:center; justify-content:center; color:#23543A;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg></div>
+        <div style="flex:1; aspect-ratio:1; border-radius:16px; background:#fff; box-shadow:inset 0 0 0 1px #ece5d6; display:flex; align-items:center; justify-content:center; color:#23543A;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+        <div style="flex:1; aspect-ratio:1; border-radius:16px; background:#fff; box-shadow:inset 0 0 0 1px #ece5d6; display:flex; align-items:center; justify-content:center; color:#23543A;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6"></path></svg></div>
+      </div>
+      <div style="font-size:13px; font-weight:600; color:#6b6656; line-height:1.55;">Duotone rounded set, <b style="color:#2A2A24;">1.75px stroke</b> with soft filled accents. A touch more refined than Sprout &mdash; warm, hand-picked feel. Drop your SVG set into these tiles.</div>
+    </div>
+
+  </div>
+</section>
+
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="24" fill="#3DA35D"></rect><text x="50" y="68" font-family="Fredoka, sans-serif" font-size="52" font-weight="700" fill="#ffffff" text-anchor="middle">H</text></svg></template></x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { qtyA: 2, qtyB: 1 };
+  renderVals() {
+    return {
+      qtyA: this.state.qtyA,
+      qtyB: this.state.qtyB,
+      incA: () => this.setState(s => ({ qtyA: s.qtyA + 1 })),
+      decA: () => this.setState(s => ({ qtyA: Math.max(0, s.qtyA - 1) })),
+      incB: () => this.setState(s => ({ qtyB: s.qtyB + 1 })),
+      decB: () => this.setState(s => ({ qtyB: Math.max(0, s.qtyB - 1) })),
+    };
+  }
+}
+</script>
+</body>
+</html>

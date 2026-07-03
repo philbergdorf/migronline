@@ -1,0 +1,389 @@
+import { ButtonHTMLAttributes, InputHTMLAttributes, ReactNode } from 'react'
+import { Search, Plus, Minus, Check, User } from 'lucide-react'
+
+/* ---------------------------------------------------------------------------
+   Layout / typography
+--------------------------------------------------------------------------- */
+
+/** Large display page title (Fredoka), with an optional trailing action. */
+export function PageTitle({
+  children,
+  action,
+}: {
+  children: ReactNode
+  action?: ReactNode
+}) {
+  return (
+    <div className="flex items-center justify-between gap-3 px-5 pb-1 pt-[calc(env(safe-area-inset-top)+2.75rem)]">
+      <h1 className="font-display text-[32px] font-bold leading-tight text-forest">
+        {children}
+      </h1>
+      {action}
+    </div>
+  )
+}
+
+/** Circular profile button for a page header's top-right corner. */
+export function ProfileButton({ onClick }: { onClick?: () => void }) {
+  return (
+    <button
+      type="button"
+      aria-label="Profile"
+      onClick={onClick}
+      className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-hairline bg-surface text-forest shadow-soft transition-transform duration-150 ease-bounce hover:scale-105 active:scale-95"
+    >
+      <User size={22} strokeWidth={2} />
+    </button>
+  )
+}
+
+/** Uppercase section label. */
+export function SectionLabel({ children }: { children: ReactNode }) {
+  return (
+    <div className="px-5 pb-2 pt-6 text-[13px] font-bold uppercase tracking-[0.14em] text-label">
+      {children}
+    </div>
+  )
+}
+
+/** Generic Harvest surface card. */
+export function Card({
+  children,
+  className = '',
+}: {
+  children: ReactNode
+  className?: string
+}) {
+  return (
+    <div
+      className={`rounded-card border border-hairline bg-surface shadow-soft ${className}`}
+    >
+      {children}
+    </div>
+  )
+}
+
+/* ---------------------------------------------------------------------------
+   Buttons
+--------------------------------------------------------------------------- */
+
+type Variant = 'primary' | 'secondary' | 'outline' | 'checkout' | 'disabled'
+
+const VARIANTS: Record<Variant, string> = {
+  primary:
+    'bg-forest text-white shadow-cta px-[26px] py-[14px] text-[15px] hover:-translate-y-[3px] hover:scale-[1.03]',
+  secondary:
+    'bg-surface text-forest shadow-soft px-[26px] py-[14px] text-[15px] hover:-translate-y-[3px] hover:scale-[1.03]',
+  outline:
+    'bg-transparent text-primary border-2 border-primary px-[24px] py-[12px] text-[15px] hover:-translate-y-[3px] hover:scale-[1.03]',
+  checkout:
+    'w-full bg-forest text-white shadow-checkout py-[18px] text-[18px] !rounded-[18px] hover:scale-[1.02]',
+  disabled: 'bg-sand text-muted px-[26px] py-[14px] text-[15px] cursor-not-allowed',
+}
+
+export function Button({
+  variant = 'primary',
+  className = '',
+  children,
+  ...props
+}: {
+  variant?: Variant
+} & ButtonHTMLAttributes<HTMLButtonElement>) {
+  return (
+    <button
+      type="button"
+      disabled={variant === 'disabled'}
+      className={`inline-flex items-center justify-center gap-2 rounded-btn font-display font-bold transition-transform duration-150 ease-bounce ${VARIANTS[variant]} ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
+  )
+}
+
+/** 44×44 icon "add to cart" button. */
+export function AddButton({
+  label,
+  onClick,
+}: {
+  label: string
+  onClick?: () => void
+}) {
+  return (
+    <button
+      type="button"
+      aria-label={label}
+      onClick={onClick}
+      className="grid h-11 w-11 shrink-0 place-items-center rounded-[12px] bg-primary text-white transition-transform duration-150 ease-bounce hover:scale-105 active:scale-95"
+    >
+      <Plus size={22} strokeWidth={2.5} />
+    </button>
+  )
+}
+
+/* ---------------------------------------------------------------------------
+   Badges & chips
+--------------------------------------------------------------------------- */
+
+const BADGE_TONES = {
+  sale: 'bg-tomato text-white',
+  fresh: 'bg-forest text-white',
+  citrus: 'bg-citrus text-ink',
+  berry: 'bg-berry text-white',
+} as const
+
+export function Badge({
+  tone = 'fresh',
+  children,
+}: {
+  tone?: keyof typeof BADGE_TONES
+  children: ReactNode
+}) {
+  return (
+    <span
+      className={`inline-block rounded-[10px] px-[10px] py-[5px] text-[11px] font-extrabold ${BADGE_TONES[tone]}`}
+    >
+      {children}
+    </span>
+  )
+}
+
+export function FilterChips({
+  items,
+  value,
+  onChange,
+}: {
+  items: string[]
+  value: string
+  onChange: (v: string) => void
+}) {
+  return (
+    <div className="no-scrollbar flex gap-2 overflow-x-auto px-5 py-1">
+      {items.map((item) => {
+        const selected = item === value
+        return (
+          <button
+            key={item}
+            type="button"
+            onClick={() => onChange(item)}
+            className={`shrink-0 rounded-chip px-[18px] py-[9px] text-[14px] font-bold transition ${
+              selected
+                ? 'bg-forest text-white'
+                : 'bg-surface text-ink shadow-chip'
+            }`}
+          >
+            {item}
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
+/* ---------------------------------------------------------------------------
+   Inputs & controls
+--------------------------------------------------------------------------- */
+
+export function SearchField({
+  className = '',
+  ...props
+}: InputHTMLAttributes<HTMLInputElement>) {
+  return (
+    <div
+      className={`flex items-center gap-2 rounded-btn bg-surface px-[18px] py-[14px] shadow-[inset_0_0_0_1px_#ece5d6] ${className}`}
+    >
+      <Search size={18} className="shrink-0 text-label" strokeWidth={2} />
+      <input
+        className="w-full bg-transparent text-[15px] font-semibold text-ink outline-none placeholder:font-normal placeholder:text-label"
+        {...props}
+      />
+    </div>
+  )
+}
+
+export function TextInput({
+  label,
+  ...props
+}: { label?: string } & InputHTMLAttributes<HTMLInputElement>) {
+  return (
+    <label className="block">
+      {label && (
+        <span className="mb-1.5 block text-[13px] font-bold text-muted">{label}</span>
+      )}
+      <input
+        className="w-full rounded-btn border-2 border-hairline bg-surface px-[18px] py-[14px] text-[15px] font-semibold text-ink outline-none transition-colors placeholder:font-normal placeholder:text-label focus:border-primary"
+        {...props}
+      />
+    </label>
+  )
+}
+
+export function QuantityStepper({
+  value,
+  onChange,
+  min = 0,
+  label = 'Quantity',
+}: {
+  value: number
+  onChange: (v: number) => void
+  min?: number
+  label?: string
+}) {
+  return (
+    <div
+      className="inline-flex items-center gap-1 rounded-[14px] bg-surface p-1 shadow-[inset_0_0_0_1px_#ece5d6]"
+      role="group"
+      aria-label={label}
+    >
+      <button
+        type="button"
+        aria-label="Decrease"
+        onClick={() => onChange(Math.max(min, value - 1))}
+        className="grid h-11 w-11 place-items-center rounded-[10px] bg-sand text-forest transition active:scale-95"
+      >
+        <Minus size={18} strokeWidth={2.5} />
+      </button>
+      <span className="min-w-[44px] text-center text-[18px] font-extrabold text-ink">
+        {value}
+      </span>
+      <button
+        type="button"
+        aria-label="Increase"
+        onClick={() => onChange(value + 1)}
+        className="grid h-11 w-11 place-items-center rounded-[10px] bg-primary text-white transition active:scale-95"
+      >
+        <Plus size={18} strokeWidth={2.5} />
+      </button>
+    </div>
+  )
+}
+
+export function Toggle({
+  checked,
+  onChange,
+  label,
+}: {
+  checked: boolean
+  onChange: (v: boolean) => void
+  label: string
+}) {
+  return (
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      aria-label={label}
+      onClick={() => onChange(!checked)}
+      className={`relative h-[30px] w-[52px] shrink-0 rounded-full transition-colors ${
+        checked ? 'bg-primary' : 'bg-sand'
+      }`}
+    >
+      <span
+        className={`absolute top-[3px] grid h-6 w-6 place-items-center rounded-full bg-white shadow transition-all ${
+          checked ? 'left-[25px]' : 'left-[3px]'
+        }`}
+      >
+        {checked && <Check size={14} strokeWidth={3} className="text-primary" />}
+      </span>
+    </button>
+  )
+}
+
+export function Checkbox({
+  checked,
+  onChange,
+  label,
+}: {
+  checked: boolean
+  onChange: (v: boolean) => void
+  label: string
+}) {
+  return (
+    <label className="flex cursor-pointer items-center gap-3">
+      <span
+        className={`grid h-[26px] w-[26px] place-items-center rounded-[8px] border-2 transition ${
+          checked ? 'border-primary bg-primary' : 'border-hairline bg-surface'
+        }`}
+      >
+        {checked && <Check size={16} strokeWidth={3} className="text-white" />}
+      </span>
+      <input
+        type="checkbox"
+        className="sr-only"
+        checked={checked}
+        onChange={(e) => onChange(e.target.checked)}
+      />
+      <span className="text-[15px] font-semibold text-ink">{label}</span>
+    </label>
+  )
+}
+
+/* ---------------------------------------------------------------------------
+   Cards
+--------------------------------------------------------------------------- */
+
+export function ProductCard({
+  name,
+  sub,
+  price,
+  emoji,
+  gradient = 'from-primary/20 to-citrus/20',
+  badge,
+  onAdd,
+}: {
+  name: string
+  sub: string
+  price: string
+  emoji: string
+  gradient?: string
+  badge?: ReactNode
+  onAdd?: () => void
+}) {
+  return (
+    <div className="rounded-card border border-hairline bg-surface p-3">
+      <div
+        className={`relative mb-3 grid h-[120px] place-items-center rounded-[16px] bg-gradient-to-br ${gradient}`}
+      >
+        {badge && <div className="absolute left-2 top-2">{badge}</div>}
+        <span className="text-5xl" aria-hidden>
+          {emoji}
+        </span>
+      </div>
+      <div className="text-[15px] font-extrabold text-ink">{name}</div>
+      <div className="text-[12px] font-bold text-label">{sub}</div>
+      <div className="mt-2 flex items-center justify-between">
+        <span className="font-display text-[18px] font-bold text-forest">{price}</span>
+        <AddButton label={`Add ${name}`} onClick={onAdd} />
+      </div>
+    </div>
+  )
+}
+
+export function OrderSummary({
+  title = 'Order summary',
+  rows,
+  total,
+}: {
+  title?: string
+  rows: { label: string; value: string }[]
+  total: { label: string; value: string }
+}) {
+  return (
+    <div className="rounded-card bg-surface p-[18px] shadow-[inset_0_0_0_1px_#ece5d6]">
+      <h3 className="font-display text-[16px] font-bold text-ink">{title}</h3>
+      <div className="mt-3 space-y-2">
+        {rows.map((r) => (
+          <div key={r.label} className="flex justify-between text-[14px] font-bold text-muted">
+            <span>{r.label}</span>
+            <span>{r.value}</span>
+          </div>
+        ))}
+      </div>
+      <div className="my-3 border-t border-dashed border-hairline" />
+      <div className="flex items-center justify-between">
+        <span className="text-[15px] font-extrabold text-ink">{total.label}</span>
+        <span className="font-display text-[20px] font-bold text-forest">{total.value}</span>
+      </div>
+    </div>
+  )
+}
