@@ -1,4 +1,4 @@
-import { PageTitle, ProfileButton, SectionLabel, Card, Button, Badge, ProductCard } from '../components/ui'
+import { PageTitle, ProfileButton, SectionLabel, Card, Button, Badge, ProductCard, DeliverySlotCard } from '../components/ui'
 
 const COLLECTIONS = [
   { title: 'New & trending', sub: '32 products', emoji: '✨', gradient: 'from-citrus/30 to-primary/20' },
@@ -15,6 +15,11 @@ export default function DiscoverPage() {
   return (
     <>
       <PageTitle action={<ProfileButton />}>Discover</PageTitle>
+
+      {/* Delivery slot */}
+      <div className="px-4 pb-1">
+        <DeliverySlotCard />
+      </div>
 
       {/* Hero promo */}
       <div className="px-4">

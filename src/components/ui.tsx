@@ -63,6 +63,22 @@ export function Card({
   )
 }
 
+/** Delivery slot summary with a "Change" action. */
+export function DeliverySlotCard({ onChange }: { onChange?: () => void }) {
+  return (
+    <Card className="flex items-center justify-between gap-3 p-4">
+      <p className="text-[14px] font-bold text-muted">
+        Delivery to 8005 Zürich
+        <br />
+        <span className="font-semibold text-label">Today 17:00–18:00</span>
+      </p>
+      <Button variant="outline" onClick={onChange}>
+        Change
+      </Button>
+    </Card>
+  )
+}
+
 /* ---------------------------------------------------------------------------
    Buttons
 --------------------------------------------------------------------------- */

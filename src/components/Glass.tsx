@@ -1,30 +1,23 @@
-import { Search, LucideIcon } from 'lucide-react'
+import { LucideIcon } from 'lucide-react'
 
 export type Tab = { path: string; label: string; Icon: LucideIcon }
 
 /**
- * Floating Liquid Glass tab bar with a detached search button.
- *
- * The one place we keep Liquid Glass in the otherwise-opaque Harvest UI.
- * True to iOS 26: a `.search`-role tab is pulled into its own separate glass
- * container, floating to the right with a gap. Active tint uses Harvest forest.
+ * Floating Liquid Glass tab bar — the one place we keep Liquid Glass in the
+ * otherwise-opaque Harvest UI. Warm frosted material, forest-green active tint.
  */
 export function GlassTabbar({
   tabs,
   active,
   onChange,
-  onSearch,
-  searchActive,
 }: {
   tabs: Tab[]
   active: string
   onChange: (path: string) => void
-  onSearch?: () => void
-  searchActive?: boolean
 }) {
   return (
-    <div className="pointer-events-none absolute inset-x-0 bottom-0 z-40 flex items-stretch justify-center gap-2.5 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
-      <nav className="glass pointer-events-auto flex items-center gap-1 rounded-full p-1.5">
+    <div className="pointer-events-none absolute inset-x-0 bottom-0 z-40 flex justify-center px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+      <nav className="glass pointer-events-auto flex items-center gap-0.5 rounded-full p-1.5">
         {tabs.map(({ path, label, Icon }) => {
           const isActive = path === active
           return (
@@ -32,7 +25,7 @@ export function GlassTabbar({
               key={path}
               type="button"
               onClick={() => onChange(path)}
-              className={`flex flex-col items-center justify-center rounded-full px-4 py-1.5 transition ${
+              className={`flex flex-col items-center justify-center rounded-full px-3 py-1.5 transition ${
                 isActive ? 'glass-thin text-forest' : 'text-muted'
               }`}
             >
@@ -42,19 +35,6 @@ export function GlassTabbar({
           )
         })}
       </nav>
-
-      {onSearch && (
-        <button
-          type="button"
-          aria-label="Search"
-          onClick={onSearch}
-          className={`glass pointer-events-auto grid w-[67px] place-items-center rounded-full transition active:scale-95 ${
-            searchActive ? 'text-forest' : 'text-muted'
-          }`}
-        >
-          <Search size={24} strokeWidth={searchActive ? 2.4 : 1.9} />
-        </button>
-      )}
     </div>
   )
 }

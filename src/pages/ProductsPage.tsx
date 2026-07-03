@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { PageTitle, SectionLabel, Card, Button, Badge, FilterChips, ProductCard } from '../components/ui'
+import { PageTitle, SectionLabel, Badge, FilterChips, ProductCard, DeliverySlotCard } from '../components/ui'
 
 const CATEGORIES = ['All', 'Fruit & Veg', 'Dairy', 'Bakery', 'Drinks', 'Snacks']
 
@@ -22,14 +22,7 @@ export default function ProductsPage() {
       <FilterChips items={CATEGORIES} value={category} onChange={setCategory} />
 
       <div className="px-4 pt-3">
-        <Card className="flex items-center justify-between gap-3 p-4">
-          <p className="text-[14px] font-bold text-muted">
-            Delivery to 8005 Zürich
-            <br />
-            <span className="font-semibold text-label">Today 17:00–18:00</span>
-          </p>
-          <Button variant="outline">Change</Button>
-        </Card>
+        <DeliverySlotCard />
       </div>
 
       <SectionLabel>Popular this week</SectionLabel>
