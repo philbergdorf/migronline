@@ -5,6 +5,7 @@ import { RecipeCard } from '../components/RecipeCard'
 import { RecipeListView } from './cook/RecipeListView'
 import { RecipeDetailView } from './cook/RecipeDetailView'
 import { CreateRecipeView } from './cook/CreateRecipeView'
+import { MealPlanView } from './cook/MealPlanView'
 import {
   neueRezepte,
   favoritenRezepte,
@@ -187,11 +188,7 @@ function CookHome({
       </div>
 
       {mealPlan ? (
-        <div className="flex flex-col items-center px-8 pb-28 pt-16 text-center">
-          <span className="mb-3 text-5xl">🗓️</span>
-          <p className="text-[15px] font-extrabold text-ink">Meal plan</p>
-          <p className="mt-1 text-[13px] font-semibold text-label">Plan your week and generate a shopping list — coming soon.</p>
-        </div>
+        <MealPlanView onOpenRecipe={onOpenRecipe} />
       ) : (
         <>
           {/* Search */}

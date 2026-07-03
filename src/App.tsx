@@ -5,6 +5,7 @@ import PhoneFrame from './PhoneFrame'
 import { GlassTabbar, Tab } from './components/Glass'
 import { FavoritesProvider } from './lib/favorites'
 import { CustomRecipesProvider } from './lib/customRecipes'
+import { MealPlanProvider } from './lib/mealPlan'
 import DiscoverPage from './pages/DiscoverPage'
 import ProductsPage from './pages/ProductsPage'
 import TopProductsPage from './pages/TopProductsPage'
@@ -26,6 +27,7 @@ export default function App() {
 
   return (
     <CustomRecipesProvider>
+      <MealPlanProvider>
       <FavoritesProvider>
         <PhoneFrame>
           <Page className="!bg-transparent">
@@ -42,6 +44,7 @@ export default function App() {
           <GlassTabbar tabs={TABS} active={pathname} onChange={navigate} />
         </PhoneFrame>
       </FavoritesProvider>
+      </MealPlanProvider>
     </CustomRecipesProvider>
   )
 }
