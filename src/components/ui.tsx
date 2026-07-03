@@ -98,7 +98,7 @@ export function HScroll({ children }: { children: ReactNode }) {
 /** Grouped list container — rounded surface card with divided rows. */
 export function ListGroup({ children }: { children: ReactNode }) {
   return (
-    <div className="mx-4 divide-y divide-hairline overflow-hidden rounded-card border border-hairline bg-surface shadow-soft">
+    <div className="mx-4 divide-y divide-hairline overflow-hidden rounded-[20px] border border-hairline bg-surface shadow-soft">
       {children}
     </div>
   )
@@ -454,27 +454,25 @@ export function ProductRow({
     <div
       className={
         bare
-          ? 'flex items-stretch gap-3 pr-3'
-          : 'flex items-stretch gap-3 overflow-hidden rounded-[18px] border border-hairline bg-surface pr-3'
+          ? 'flex items-center gap-3 px-3 py-2.5'
+          : 'flex items-center gap-3 rounded-[20px] border border-hairline bg-surface px-3 py-2.5'
       }
     >
       <div
-        className={`relative grid w-16 shrink-0 place-items-center border border-black/10 bg-gradient-to-br ${gradient}`}
+        className={`relative grid h-[88px] w-[88px] shrink-0 place-items-center rounded-2xl border border-black/10 bg-gradient-to-br ${gradient}`}
       >
-        {badge && <div className="absolute left-1.5 top-1.5">{badge}</div>}
-        <span className="text-3xl" aria-hidden>
+        {badge && <div className="absolute -left-1 -top-1">{badge}</div>}
+        <span className="text-5xl" aria-hidden>
           {emoji}
         </span>
       </div>
-      <div className="flex min-w-0 flex-1 items-center gap-3 py-2.5">
-        <div className="min-w-0 flex-1">
-          <div className="text-[15px] font-extrabold leading-tight text-ink">{name}</div>
-          <div className="mt-0.5 text-[12px] font-bold leading-snug text-label">{sub}</div>
-        </div>
-        <div className="flex shrink-0 items-center gap-2.5">
-          <span className="font-display text-[16px] font-bold text-forest">{price}</span>
-          <AddButton label={`Add ${name}`} onClick={onAdd} />
-        </div>
+      <div className="min-w-0 flex-1">
+        <div className="text-[15px] font-extrabold leading-tight text-ink">{name}</div>
+        <div className="mt-0.5 text-[12px] font-bold leading-snug text-label">{sub}</div>
+      </div>
+      <div className="flex shrink-0 items-center gap-2.5">
+        <span className="font-display text-[16px] font-bold text-forest">{price}</span>
+        <AddButton label={`Add ${name}`} onClick={onAdd} />
       </div>
     </div>
   )

@@ -110,6 +110,14 @@ export default function ProductsPage() {
         {RUNNING_LOW.map((p) => (
           <ProductRow key={p.name} bare {...p} />
         ))}
+        <button
+          type="button"
+          onClick={() => navigate('/products')}
+          className="flex w-full items-center justify-center gap-1 px-3 py-3.5 text-[15px] font-bold text-forest transition active:bg-sand/60"
+        >
+          Show all
+          <ChevronRight size={16} strokeWidth={2.5} />
+        </button>
       </ListGroup>
 
       <div className="h-28" />
