@@ -510,10 +510,12 @@ export function OrderSummary({
   title = 'Order summary',
   rows,
   total,
+  saved,
 }: {
   title?: string
   rows: { label: string; value: string }[]
   total: { label: string; value: string }
+  saved?: string
 }) {
   return (
     <div className="rounded-card bg-surface p-[18px] shadow-[inset_0_0_0_1px_#ece5d6]">
@@ -525,6 +527,12 @@ export function OrderSummary({
             <span>{r.value}</span>
           </div>
         ))}
+        {saved && (
+          <div className="flex justify-between text-[14px] font-bold text-primary">
+            <span>You saved</span>
+            <span>−{saved}</span>
+          </div>
+        )}
       </div>
       <div className="my-3 border-t border-dashed border-hairline" />
       <div className="flex items-center justify-between">

@@ -26,11 +26,15 @@ const TOP_PRODUCTS = [
   { name: 'Dark Chocolate', sub: '100 g · 70%', price: 'CHF 2.40', emoji: '🍫', gradient: 'from-berry/20 to-forest/15' },
 ]
 
+// Staples only — non-perishable household & pantry items you restock on a cycle.
 const RUNNING_LOW = [
-  { name: 'Coffee Beans', sub: 'Last bought 3 weeks ago', price: 'CHF 6.90', emoji: '☕', gradient: 'from-berry/15 to-forest/15' },
-  { name: 'Oat Milk', sub: 'Last bought 2 weeks ago', price: 'CHF 2.10', emoji: '🥛', gradient: 'from-primary/15 to-sand' },
+  { name: 'Laundry Detergent', sub: 'Last bought 7 weeks ago', price: 'CHF 12.90', emoji: '🧴', gradient: 'from-primary/15 to-sand' },
   { name: 'Toilet Paper', sub: 'Last bought 4 weeks ago', price: 'CHF 4.80', emoji: '🧻', gradient: 'from-primary/12 to-citrus/15' },
+  { name: 'Dishwasher Tabs', sub: 'Last bought 6 weeks ago', price: 'CHF 7.40', emoji: '🧼', gradient: 'from-citrus/20 to-sand' },
+  { name: 'Rice', sub: 'Last bought 5 weeks ago', price: 'CHF 3.40', emoji: '🍚', gradient: 'from-sand to-primary/12' },
+  { name: 'Pasta', sub: 'Last bought 3 weeks ago', price: 'CHF 1.80', emoji: '🍝', gradient: 'from-citrus/30 to-sand' },
   { name: 'Olive Oil', sub: 'Last bought 5 weeks ago', price: 'CHF 8.50', emoji: '🫒', gradient: 'from-citrus/25 to-primary/15' },
+  { name: 'Coffee Beans', sub: 'Last bought 2 weeks ago', price: 'CHF 6.90', emoji: '☕', gradient: 'from-berry/15 to-forest/15' },
 ]
 
 export default function ProductsPage() {

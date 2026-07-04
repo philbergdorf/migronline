@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom'
+import { User, ChevronRight } from 'lucide-react'
 import {
-  PageTitle,
-  ProfileButton,
   SectionLabel,
   Card,
   Button,
@@ -44,10 +43,53 @@ export default function DiscoverPage() {
 
   return (
     <>
-      <PageTitle action={<ProfileButton />}>Discover</PageTitle>
+      {/* Wine Festival full-bleed teaser */}
+      <div className="relative h-[300px] w-full overflow-hidden bg-gradient-to-br from-[#7B2D4E] to-[#3B1526]">
+        <img
+          src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=900&h=760&fit=crop"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-black/45" />
+
+        {/* Profile */}
+        <button
+          type="button"
+          aria-label="Profile"
+          className="absolute right-4 grid h-10 w-10 place-items-center rounded-full bg-white/20 text-white backdrop-blur-md"
+          style={{ top: 'calc(env(safe-area-inset-top) + 12px)' }}
+        >
+          <User size={20} strokeWidth={2} />
+        </button>
+
+        {/* Title */}
+        <div className="absolute left-5 right-5" style={{ top: 'calc(env(safe-area-inset-top) + 3.25rem)' }}>
+          <span className="text-[12px] font-bold uppercase tracking-[0.14em] text-white/80">Limited time</span>
+          <h1 className="mt-1 font-display text-[32px] font-bold leading-tight text-white">Wine Festival</h1>
+          <p className="mt-1 text-[14px] font-semibold text-white/85">
+            Hand-picked &amp; regional favourites
+          </p>
+        </div>
+
+        {/* Offer badge */}
+        <div className="absolute bottom-4 left-5 rounded-2xl bg-citrus px-3.5 py-2 text-center leading-none text-ink shadow-lg">
+          <div className="font-display text-[20px] font-bold">20–40%</div>
+          <div className="text-[12px] font-bold">off wines</div>
+        </div>
+
+        {/* Carousel arrow */}
+        <button
+          type="button"
+          aria-label="See promotions"
+          onClick={() => navigate('/promotions')}
+          className="absolute bottom-4 right-4 grid h-11 w-11 place-items-center rounded-full bg-white text-forest shadow-lg transition active:scale-95"
+        >
+          <ChevronRight size={22} strokeWidth={2.4} />
+        </button>
+      </div>
 
       {/* Delivery slot */}
-      <div className="px-4 pb-1">
+      <div className="px-4 pt-3 pb-1">
         <DeliverySlotCard />
       </div>
 
