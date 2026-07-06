@@ -16,8 +16,8 @@ import BasketPage from './pages/BasketPage'
 const TABS: Tab[] = [
   { path: '/', label: 'Discover', Icon: Compass },
   { path: '/products', label: 'Products', Icon: TextSearch },
-  { path: '/promotions', label: 'Promotions', Icon: BadgePercent },
   { path: '/cook', label: 'Cook', Icon: ChefHat },
+  { path: '/promotions', label: 'Promotions', Icon: BadgePercent },
   { path: '/basket', label: 'Basket', Icon: ShoppingBasket },
 ]
 
