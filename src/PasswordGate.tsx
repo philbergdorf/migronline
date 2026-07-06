@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from 'react'
+import { ShoppingBasket } from 'lucide-react'
 
 const PASSWORD = 'migi'
 const KEY = 'migronline-auth'
@@ -29,8 +30,8 @@ export default function PasswordGate({ children }: { children: ReactNode }) {
         className="w-full max-w-[300px]"
       >
         <div className="mb-6 text-center">
-          <div className="mx-auto mb-3 grid h-14 w-14 place-items-center rounded-2xl bg-forest text-2xl">
-            🛒
+          <div className="mx-auto mb-3 grid h-14 w-14 place-items-center rounded-2xl bg-forest text-white">
+            <ShoppingBasket size={28} strokeWidth={2} />
           </div>
           <h1 className="font-display text-[24px] font-bold text-forest">Migronline</h1>
           <p className="mt-1 text-[14px] font-semibold text-label">Enter the password to continue</p>
